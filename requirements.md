@@ -176,7 +176,7 @@
 1. If user is not logged in, system will tell user to login before rating and will pop up login screen
 
 #
-10. Comment on Recipe (Ryan Tang
+10. Comment on Recipe (Ryan Tang)
 - **Pre-condition:** User is logged in and is viewing the recipe
 - **Trigger:** User enters a comment into the comment box and clicks “submit”
 - **Primary Sequence:** 
