@@ -113,23 +113,134 @@
 2. System shows user an error message to complete inputting the details needed.
 
 #
-6. Delete Recipe
+6. Delete Recipe (Ryan Tang)
+- **Pre-condition:** User is logged in and is the owner/editor of the recipe
+- **Trigger:** User clicks on the delete button for the selected recipe they want removed
+- **Primary Sequence:**
+1. System verifies and confirms that user owns recipe
+2. User select delete button
+3. System displays confirmation dialog for deleting recipe
+4. User confirms deletion
+5. System deletes recipe from database
+6. System displays a success message confirming deletion
+
+- **Primary Postconditions:** Recipe is successfully removed from the system and page is removed
+- **Alternate Sequence:**
+1. If user cancels confirmation fo wanting to delete, dialog closes and nothing happens
+2. If user isn't the owner of the recipe, will show an error message and won't allow deletion
+
+#
+7. View Recipe (Ryan Tang)
+- **Pre-condition:** Recipe exists in the database
+- **Trigger:** User clicks on recipe link or selects a recipe from searching it
+- **Primary Sequence:**
+1. User searches for certain recipe
+2. System checks if recipe data is in the database
+3. User clicks on recipe they want displayed
+4. System displays recipe details including ingredients, steps, comments, and ratings
+
+- **Primary Postconditions:** User is able to view the recipe in full detail
+- **Alternate Sequence:**
+1. If recipe doesn’t exist, has been deleted, or isn’t in the database, an error message will occur
+
+#
+8. Search Recipe (Ryan Tang)
+- **Pre-condition:** User is on main page or is using the search bar
+- **Trigger:** User is entering keywords into the search bar
+- **Primary Sequence:** 
+1. User types recipe name/ingredient into search bar
+2. System receives search and filters recipe by keywords(such as recipe name and ingredients)
+3. System displays a list of matching recipes accordion what is searched
+
+- **Primary Postconditions:**
+1. There are matching recipes being displayed
+2. No matching information was displayed
+-  **Alternate Sequence:** 
+1. A “no results found” message will be displayed if there is no recipe matching keywords
+
+#
+9. Rate Recipe (Ryan Tang)
+- **Pre-condition:** User is logged in and has viewed a recipe
+- **Trigger:** User clicks on a star rating from 1-5 stars
+- **Primary Sequence:** 
+1. User clicks into a recipe to view recipe details
+2. User clicks on the stars between 1-5 stars
+3. System takes rating input from user
+4. System updates recipe’s average rating in database
+5. System confirms that rating was submitted
+6. If user decides to change rating, it will re update input from user and update recipe’s average
+
+- **Primary Postconditions:** recipe rating is updated and stored
+- **Alternate Sequence:**
+1. If user is not logged in, system will tell user to login before rating and will pop up login screen
+
+#
+10. Comment on Recipe (Ryan Tang)
+- **Pre-condition:** User is logged in and is viewing the recipe
+- **Trigger:** User enters a comment into the comment box and clicks “submit”
+- **Primary Sequence:**
+1. User is on recipe page
+2. System captures the comment that has been inputted
+3. System stores comment into the database with Username/ID and timestamp
+4. System displays new comment in the recipe page
+
+- **Primary Postconditions:** Comment is stored and is visible to other users in the recipe page
+- **Alternate Sequence:**
+1.User is not logged in and system will pop up login
+2. Comment is empty or is longer than the maximum amount of words and will show an error message
+
+
+#
+11. View User Profile
 - **Pre-condition:**
 - **Trigger:** 
 - **Primary Sequence:**
 1. 
 
 - **Primary Postconditions:**
-- - **Alternate Sequence:**
+- **Alternate Sequence:**
 1.
 
 #
-7. View Recipe
+12. Edit User Profile
 - **Pre-condition:**
 - **Trigger:** 
 - **Primary Sequence:**
 1. 
 
 - **Primary Postconditions:**
-- - **Alternate Sequence:**
+- **Alternate Sequence:**
+1.
+
+#
+13. Save Recipe
+- **Pre-condition:**
+- **Trigger:** 
+- **Primary Sequence:**
+1. 
+
+- **Primary Postconditions:**
+- **Alternate Sequence:**
+1.
+
+#
+14. View All Recipes
+- **Pre-condition:**
+- **Trigger:** 
+- **Primary Sequence:**
+1. 
+
+- **Primary Postconditions:**
+- **Alternate Sequence:**
+1.
+
+#
+15. Filter Recipe
+- **Pre-condition:**
+- **Trigger:** 
+- **Primary Sequence:**
+1. 
+
+- **Primary Postconditions:**
+- **Alternate Sequence:**
 1.
