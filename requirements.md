@@ -186,7 +186,7 @@
 
 - **Primary Postconditions:** Comment is stored and is visible to other users in the recipe page
 - **Alternate Sequence:**
-1.User is not logged in and system will pop up login
+1. User is not logged in and system will pop up login
 2. Comment is empty or is longer than the maximum amount of words and will show an error message
 
 
