@@ -21,8 +21,7 @@
 1. User-created food recipes must be saved and not lost.
 2. The website's interface should be intuitive, even for first-time users.
 
-## Use Cases <Add name of who will write (this specific requirement) and implement (in subsequent milestones) the use case below>
-
+## Use Cases
 1. User Registration (Jhenaro Flores)
 - **Pre-condition:** User must be able to access the website successfully.
 - **Trigger:** User wants to register an account to the food web app.
