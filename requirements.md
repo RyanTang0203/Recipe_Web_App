@@ -18,8 +18,8 @@
 <using the syntax [](images/ui1.png) add images in a folder called images/ and place sketches of your webpages>
 
 ## Non-functional Requirements
-1. User-created food recipes must be saved and not lost.
-2. The website's interface should be intuitive, even for first-time users.
+1. The website's interface should be intuitive, even for first-time users.
+2. The user should be able to access the homepage from any page.
 
 ## Use Cases
 1. User Registration (Jhenaro Flores)
