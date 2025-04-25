@@ -4,6 +4,7 @@ from .models import db, User
 from .forms import LoginForm, RegisterForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import myapp_obj
+from datetime import datetime
 
 @myapp_obj.route('/', methods=['GET', 'POST'])
 def login():
@@ -45,3 +46,41 @@ def home():
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
+
+@myapp_obj.route("/recipes")
+@myapp_obj.route("/")
+def list_recipes():
+    recipes = Recipe.query.all()
+    return render_template("recipes.html", recipes=recipes)
+
+@myapp_obj.route("/recipe/new", methods=['GET', 'POST'])
+@login_required
+def add_recipe():
+    form = RecipeForm()
+    if form.validate_on_submit():
+        recipe = Recipe(
+            title=form.title.data,
+            description=form.description.data,
+            ingredients=form.ingredients.data,
+            instructions=form.instructions.data,
+            created=datetime.utcnow()
+        )
+        db.session.add(recipe)
+        db.session.commit()
+        flash('Recipe added successfully!')
+        return redirect(url_for('home'))
+    return render_template("add_recipe.html", form=form)
+
+@myapp_obj.route("/recipe/<int:recipe_id>")
+def view_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    return render_template("recipe_detail.html", recipe=recipe)
+
+@myapp_obj.route("/recipe/<int:recipe_id>/delete")
+@login_required
+def delete_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    db.session.delete(recipe)
+    db.session.commit()
+    flash('Recipe deleted.')
+    return redirect(url_for('home'))
