@@ -39,7 +39,8 @@ def register():
 @myapp_obj.route('/home')
 @login_required
 def home():
-	return render_template('home.html')
+	recipes = Recipe.query.order_by(Recipe.created.desc()).all()
+	return render_template('home.html', recipes=recipes)
 	
 @myapp_obj.route('/logout')
 @login_required
