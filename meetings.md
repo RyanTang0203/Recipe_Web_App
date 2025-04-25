@@ -18,7 +18,7 @@
 - **Plan's For next meeting:** implement atleast 2-3 functional requirements and finish implementations(Ryan Tang & Jhenaro) and ethical implications(Ryan Tang)
 - **Summarization:** Team talked about splitting the functional requirements and what each of us are planning to work on. Will work on a few functional requirements on own time and will update team on discord on how the progress is going. 
 
-### 2025-24-04 8:05pm
+### 2025-24-04 at 8:05pm
 - **Attended Meeting** Ryan Tang, Yuzhen Kuang, Jhenaro Flores
 - **Meeting Duration:** 8:05pm - 10:50pm
 - Jhenaro Flores: finished functional requimrents 1-3, used bootstrap resources to start on homepage
