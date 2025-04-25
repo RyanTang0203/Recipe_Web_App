@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Recipe</title>
+</head>
+<body>
+    <h1>Create a New Recipe</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.title.label }}<br>{{ form.title(size=50) }}</p>
+        <p>{{ form.description.label }}<br>{{ form.description(rows=3, cols=50) }}</p>
+        <p>{{ form.ingredients.label }}<br>{{ form.ingredients(rows=5, cols=50) }}</p>
+        <p>{{ form.instructions.label }}<br>{{ form.instructions(rows=5, cols=50) }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <a href="{{ url_for('list_recipes') }}">Back to All Recipes</a>
+</body>
+</html>
