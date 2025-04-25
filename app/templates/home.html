@@ -52,8 +52,8 @@ navigation">
         <h1 class="fw-light">Welcome To The Food Recipe Website!</h1>
         <p class="lead text-body-secondary">Start creating recipes now!</p>
         <p>
-          <a href="#" class="btn btn-primary my-2">Create Recipes</a>
-          <a href="#" class="btn btn-secondary my-2">View Recipes</a>
+          <a href="{{ url_for('add_recipe') }}" class="btn btn-primary my-2">Create Recipes</a>
+          <a href="{{ url_for('list_recipes') }}" class="btn btn-secondary my-2">View Recipes</a>
         </p>
       </div>
     </div>
