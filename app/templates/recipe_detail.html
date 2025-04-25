@@ -2,16 +2,82 @@
 <html>
 <head>
     <title>{{ recipe.title }}</title>
+    <style>
+      textarea, input[type="text"] {
+          width: 100%;
+          margin-top: 5px;
+      }
+    </style>
 </head>
 <body>
-    <h1>{{ recipe.title }}</h1>
-    <p><strong>Description:</strong><br>{{ recipe.description }}</p>
-    <p><strong>Ingredients:</strong><br>{{ recipe.ingredients }}</p>
-    <p><strong>Instructions:</strong><br>{{ recipe.instructions }}</p>
+    <h1 id="title-display">{{ recipe.title }}</h1>
+    <input type="text" id="title-input" value="{{ recipe.title }}" style="display:none;">
+
+    <p><strong>Description:</strong><br>
+        <span id="description-display">{{ recipe.description }}</span>
+        <textarea id="description-input" style="display:none;">{{ recipe.description }}</textarea>
+    </p>
+
+    <p><strong>Ingredients:</strong><br>
+        <span id="ingredients-display">{{ recipe.ingredients }}</span>
+        <textarea id="ingredients-input" style="display:none;">{{ recipe.ingredients }}</textarea>
+    </p>
+
+    <p><strong>Instructions:</strong><br>
+        <span id="instructions-display">{{ recipe.instructions }}</span>
+        <textarea id="instructions-input" style="display:none;">{{ recipe.instructions }}</textarea>
+    </p>
+
+    <button onclick="enableEdit()" id="edit-btn">Edit</button>
+    <button onclick="saveEdit()" id="save-btn" style="display:none;">Save</button>
+
     <p>
       <a href="{{ url_for('list_recipes') }}" class="btn btn-secondary">
         ← Back to Home
       </a>
     </p>
+
+    <script>
+      function enableEdit() {
+          document.getElementById('edit-btn').style.display = 'none';
+          document.getElementById('save-btn').style.display = 'inline';
+
+          document.getElementById('title-display').style.display = 'none';
+          document.getElementById('title-input').style.display = 'inline';
+
+          document.getElementById('description-display').style.display = 'none';
+          document.getElementById('description-input').style.display = 'block';
+
+          document.getElementById('ingredients-display').style.display = 'none';
+          document.getElementById('ingredients-input').style.display = 'block';
+
+          document.getElementById('instructions-display').style.display = 'none';
+          document.getElementById('instructions-input').style.display = 'block';
+      }
+
+      function saveEdit() {
+          document.getElementById('edit-btn').style.display = 'inline';
+          document.getElementById('save-btn').style.display = 'none';
+
+          document.getElementById('title-display').textContent = document.getElementById('title-input').value;
+          document.getElementById('description-display').textContent = document.getElementById('description-input').value;
+          document.getElementById('ingredients-display').textContent = document.getElementById('ingredients-input').value;
+          document.getElementById('instructions-display').textContent = document.getElementById('instructions-input').value;
+
+          document.getElementById('title-display').style.display = 'block';
+          document.getElementById('title-input').style.display = 'none';
+
+          document.getElementById('description-display').style.display = 'block';
+          document.getElementById('description-input').style.display = 'none';
+
+          document.getElementById('ingredients-display').style.display = 'block';
+          document.getElementById('ingredients-input').style.display = 'none';
+
+          document.getElementById('instructions-display').style.display = 'block';
+          document.getElementById('instructions-input').style.display = 'none';
+      }
+    </script>
 </body>
 </html>
+
+
