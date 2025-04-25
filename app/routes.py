@@ -49,7 +49,6 @@ def logout():
 	return redirect(url_for('login'))
 
 @myapp_obj.route("/recipes")
-@myapp_obj.route("/")
 def list_recipes():
     recipes = Recipe.query.all()
     return render_template("recipes.html", recipes=recipes)
