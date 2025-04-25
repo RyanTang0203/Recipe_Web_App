@@ -9,7 +9,7 @@
 - A way this can environmentally impact users is by promoting reducing waste and encouraging more plant-based options. People usually have leftovers after they eat and a way to avoid wasting food in the future is using what you have in your home, controlling portions or eat the leftovers and check incase expired.
 # Implementation
 General Information:
-This project is a simple recipe web application
+-This project is a simple recipe web application
 
 How To Use Website:
 - Register or log into an account
