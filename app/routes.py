@@ -26,7 +26,7 @@ def register():
             flash('Username already taken. Please choose a different one.')
             return render_template('register.html', form=form)
 
-        hashed_pw = generate_password_hash(form.password.data, method='sha256')
+        hashed_pw = generate_password_hash(form.password.data, method='scrypt')
         new_user = User(username=form.username.data, password=hashed_pw)
         db.session.add(new_user)
         db.session.commit()
