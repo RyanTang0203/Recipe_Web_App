@@ -10,7 +10,7 @@
 # Implementation
 General Information:
 - This project is a simple recipe web application:
-  -allows users to input create, edit, view and save recipes
+  - allows users to input create, edit, view and save recipes
 
 How To Use Website:
 - Register or log into an account
