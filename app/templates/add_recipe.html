@@ -8,7 +8,7 @@
     <a href="{{ url_for('home') }}" class="btn btn-secondary mb-3">← Back to Home</a>
     <form method="POST">
         {{ form.hidden_tag() }}
-        <p>{{ form.title.label }}<br>{{ form.title(size=50) }}</p> # new recipe inputs for title, description, ingredient, and instruction
+        <p>{{ form.title.label }}<br>{{ form.title(size=50) }}</p> <!-- new recipe inputs for title, description, ingredient, and instruction -->
         <p>{{ form.description.label }}<br>{{ form.description(rows=3, cols=50) }}</p>
         <p>{{ form.ingredients.label }}<br>{{ form.ingredients(rows=5, cols=50) }}</p>
         <p>{{ form.instructions.label }}<br>{{ form.instructions(rows=5, cols=50) }}</p>
