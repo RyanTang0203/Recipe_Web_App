@@ -82,7 +82,7 @@ def delete_recipe(recipe_id):
     db.session.delete(recipe)
     db.session.commit()
     flash('Recipe deleted.')
-    return redirect(url_for('home'))
+    return redirect(url_for('list_recipes'))
 
 @myapp_obj.route('/edit_recipe/<int:recipe_id>', methods=['POST'])
 def edit_recipe(recipe_id):
