@@ -68,8 +68,7 @@ def add_recipe():
         db.session.add(recipe)
         db.session.commit()
         flash('Recipe added successfully!')
-        return redirect(url_for('home'))
-    return render_template("add_recipe.html", form=form)
+    return render_template("add_recipe.html", form=RecipeForm())
 
 @myapp_obj.route("/recipe/<int:recipe_id>")
 def view_recipe(recipe_id):
