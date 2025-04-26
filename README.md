@@ -9,13 +9,16 @@
 - A way this can environmentally impact users is by promoting reducing waste and encouraging more plant-based options. People usually have leftovers after they eat and a way to avoid wasting food in the future is using what you have in your home, controlling portions or eat the leftovers and check incase expired.
 # Implementation
 General Information:
-- This project is a simple recipe web application
+- This project is a simple recipe web application:
+  -allows users to input create, edit, view and save recipes
 
 How To Use Website:
 - Register or log into an account
-- Browse for recipes or search by ingredient
+- If wanting to logout, there is a logout button at the top right of the home menu
 - Click "Add Recipe" if wanting to submit own dish
-- Click on recipe if wanting to see ingredients, ratings, health issues or comments
+- Write down all information in detail about the dish giving the name, discription, ingredients, and instructions.
+- When clicking add recipe, it adds it to the view recipes tab where you can see all the information of the recipe
+- If wanting to edit you would click on the recipe and click edit and if wanting to delete a recipe you click delete button next to recipe name
 
 Technology Used:
 - Bootstrap
@@ -27,16 +30,15 @@ Technology Used:
 Functional Requirements:
 - User Registration (Jhenaro Flores)
 - User Login (Jhenaro Flores)
-- User Logout (Jhenaro Flores)
-- Create Recipe
-- Edit Recipe
-- Delete Recipe
-- View Recipe
+- User Logout (Ryan Tang)
+- Create Recipe (Yuzhen Kuang)
+- Edit Recipe (Ryan Tang)
+- Delete Recipe (Yuzhen Kuang)
+- View Recipe (Yuzhen Kuang)
 
 # Setup
 ```
 git clone https://github.com/RyanTang0203/Recipe_Web_App.git
-git pull https://github.com/RyanTang0203/Recipe_Web_App.git
 cd Recipe_Web_App
 python3 run.py
 ```
