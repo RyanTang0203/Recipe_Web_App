@@ -15,7 +15,7 @@ General Information:
 How To Use Website:
 - Register or log into an account
 - If wanting to logout, there is a logout button at the top right of the home menu
-- Click "Add Recipe" if wanting to submit own dish
+- In the "Create Recipe" button, click "Add Recipe" if wanting to submit own dish
 - Write down all information in detail about the dish giving the name, discription, ingredients, and instructions.
 - When clicking add recipe, it adds it to the view recipes tab where you can see all the information of the recipe
 - If wanting to edit you would click on the recipe and click edit and if wanting to delete a recipe you click delete button next to recipe name
