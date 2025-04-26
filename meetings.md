@@ -33,5 +33,5 @@
 - Jhenaro Flores: finish user registration and user login
 - Ryan Tang: fixed and finished user logout and edit recipe
 - Yuzhen Kuang: finished creating, deleting and viewing recipe
-**Plan's For Next Meeting:** patching up website, adding recipes to the empty spots, and fixing home page
-  **Summarization:** Team has finished 7 functional requirements and will start working on patching up the website while waiting for the next milestone.
+- **Plan's For Next Meeting:** patching up website, adding recipes to the empty spots, and fixing home page
+- **Summarization:** Team has finished 7 functional requirements and will start working on patching up the website while waiting for the next milestone.
