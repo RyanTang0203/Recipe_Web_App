@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import myapp_obj
 from datetime import datetime
 
+# Login Page
 @myapp_obj.route('/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -18,6 +19,7 @@ def login():
             flash('Invalid username or password')
     return render_template('login.html', form=form)
 
+# User Registration
 @myapp_obj.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
@@ -35,24 +37,28 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register.html', form=form)
-
+	
+# Displays Recipes
 @myapp_obj.route('/home')
 @login_required
 def home():
 	recipes = Recipe.query.order_by(Recipe.created.desc()).all()
 	return render_template('home.html', recipes=recipes)
-	
+
+# Logout User	
 @myapp_obj.route('/logout')
 @login_required
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
 
+# Lists Recipes
 @myapp_obj.route("/recipes")
 def list_recipes():
     recipes = Recipe.query.all()
     return render_template("recipes.html", recipes=recipes)
 
+# Add New Recipe
 @myapp_obj.route("/recipe/new", methods=['GET', 'POST'])
 @login_required
 def add_recipe():
