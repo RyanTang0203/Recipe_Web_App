@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>Create a New Recipe</h1>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary mb-3">← Back to Home</a>
     <form method="POST">
         {{ form.hidden_tag() }}
         <p>{{ form.title.label }}<br>{{ form.title(size=50) }}</p>
@@ -16,3 +17,11 @@
     <a href="{{ url_for('list_recipes') }}">Back to All Recipes</a>
 </body>
 </html>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+      {{ messages[0] }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endif %}
+{% endwith %}
