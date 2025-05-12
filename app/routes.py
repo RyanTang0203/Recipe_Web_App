@@ -42,8 +42,12 @@ def register():
 @myapp_obj.route('/home')
 @login_required
 def home():
-	recipes = Recipe.query.order_by(Recipe.created.desc()).all()
-	return render_template('home.html', recipes=recipes)
+    search_query = request.args.get('search', '')
+    if search_query:
+        recipes = Recipe.query.filter(Recipe.title.ilike(f'%{search_query}%')).all()
+    else:
+        recipes = Recipe.query.all()
+    return render_template('home.html', recipes=recipes)
 
 # Logout User	
 @myapp_obj.route('/logout')
@@ -55,8 +59,12 @@ def logout():
 # Lists Recipes
 @myapp_obj.route("/recipes")
 def list_recipes():
-    recipes = Recipe.query.all()
-    return render_template("recipes.html", recipes=recipes)
+    search_query = request.args.get('search', '')
+    if search_query:
+        recipes = Recipe.query.filter(Recipe.title.ilike(f'%{search_query}%')).all()
+    else:
+        recipes = Recipe.query.all()
+    return render_template('recipes.html', recipes=recipes)
 
 # Add New Recipe
 @myapp_obj.route("/recipe/new", methods=['GET', 'POST'])
@@ -99,3 +107,11 @@ def edit_recipe(recipe_id):
     recipe.instructions = request.form['instructions']
     db.session.commit()
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
+
+@myapp_obj.route('/recipe/<int:recipe_id>/rate', methods=['POST'])
+def rate_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    rating = int(request.form['rating'])
+    recipe.rating = rating  # Replace with average logic if needed
+    db.session.commit()
+    return redirect(url_for('view_recipe', recipe_id=recipe.id))

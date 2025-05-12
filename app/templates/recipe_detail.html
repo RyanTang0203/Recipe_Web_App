@@ -62,7 +62,6 @@
 </html>
 
 
-
     <script>
       function enableEdit() {
           document.getElementById('edit-btn').style.display = 'none';
@@ -83,3 +82,10 @@
     </script>
 </body>
 </html>
+
+<form method="POST" action="{{ url_for('rate_recipe', recipe_id=recipe.id) }}">
+    <label for="rating">Rate this recipe (1–5):</label>
+    <input type="number" id="rating" name="rating" min="1" max="5">
+    <button type="submit">Submit Rating</button>
+</form>
+

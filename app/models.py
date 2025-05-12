@@ -16,3 +16,5 @@ class Recipe(db.Model):
     ingredients = db.Column(db.Text, nullable=False)
     instructions = db.Column(db.Text, nullable=False)
     created = db.Column(db.DateTime, default=datetime.utcnow)
+    rating = db.Column(db.Integer, default=0)
+    
