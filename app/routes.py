@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, request
-from flask_login import login_user, logout_user, login_required
-from .models import db, User, Recipe
+from flask_login import login_user, logout_user, login_required, current_user
+from .models import db, User, Recipe, Comment
 from .forms import LoginForm, RegisterForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import myapp_obj
@@ -115,3 +115,11 @@ def rate_recipe(recipe_id):
     recipe.rating = rating  # Replace with average logic if needed
     db.session.commit()
     return redirect(url_for('view_recipe', recipe_id=recipe.id))
+
+@myapp_obj.route('/recipe/<int:recipe_id>/comment', methods=['POST'])
+def comment_recipe(recipe_id):
+    content = request.form['content']
+    comment = Comment(recipe_id=recipe_id, content=content, user_id=current_user.id)
+    db.session.add(comment)
+    db.session.commit()
+    return redirect(url_for('view_recipe', recipe_id=recipe_id))

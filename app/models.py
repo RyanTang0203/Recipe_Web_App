@@ -17,4 +17,13 @@ class Recipe(db.Model):
     instructions = db.Column(db.Text, nullable=False)
     created = db.Column(db.DateTime, default=datetime.utcnow)
     rating = db.Column(db.Integer, default=0)
-    
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    recipe = db.relationship('Recipe', backref='comments')
+    user = db.relationship('User', backref='comments')
