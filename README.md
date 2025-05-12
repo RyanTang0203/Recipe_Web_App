@@ -32,9 +32,18 @@ Functional Requirements:
 - Delete Recipe (Yuzhen Kuang)
 - View Recipe (Yuzhen Kuang)
 
-# Setup
-```
-git clone https://github.com/RyanTang0203/Recipe_Web_App.git
-cd Recipe_Web_App
+## Setup Instructions
+
+Follow these steps to set up and run the app locally:
+
+### 1. Clone the repository
+- git clone https://github.com/jhenaroflores/CMPE131_homework3.git
+- cd CMPE131_homework3
+
+### 2. Create and activate a virtual environment *(IMPORTANT)*
+- python3 -m venv venv
+- source venv/bin/activate  
+
+### 3. Running the application
 python3 run.py
-```
+
