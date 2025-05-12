@@ -37,12 +37,15 @@ Functional Requirements:
 Follow these steps to set up and run the app locally:
 
 ### 1. Clone the repository
-- git clone https://github.com/jhenaroflores/CMPE131_homework3.git
-- cd CMPE131_homework3
+- git clone https://github.com/RyanTang0203/Recipe_Web_App.git
+- cd Recipe_Web_App
 
 ### 2. Create and activate a virtual environment *(IMPORTANT)*
 - python3 -m venv venv
-- source venv/bin/activate  
+- source venv/bin/activate
+
+### 3. Install dependencies
+pip install -r requirements.txt
 
 ### 3. Running the application
 python3 run.py
