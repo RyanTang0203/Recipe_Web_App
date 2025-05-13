@@ -120,13 +120,15 @@ def edit_recipe(recipe_id):
     db.session.commit()
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
-@myapp_obj.route('/recipe/<int:recipe_id>/rate', methods=['POST'])
+@myapp_obj.route('/rate/<int:recipe_id>', methods=['POST'])
+@login_required
 def rate_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
     rating = int(request.form['rating'])
-    recipe.rating = rating  # Replace with average logic if needed
+    recipe.rating = rating
     db.session.commit()
-    return redirect(url_for('view_recipe', recipe_id=recipe.id))
+    flash("Rating submitted!")
+    return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
 @myapp_obj.route('/recipe/<int:recipe_id>/comment', methods=['POST'])
 def comment_recipe(recipe_id):
