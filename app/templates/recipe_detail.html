@@ -108,36 +108,29 @@
 </style>
 
  <!-- FIXED navbar: title left, buttons right -->
-  <div class="navbar navbar-dark bg-dark shadow-sm">
+<header>
+  <div class="navbar navbar-dark shadow-sm">
     <div class="container-fluid">
       <a href="{{ url_for('home') }}" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-             stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
         <strong>Food Recipe Website</strong>
       </a>
-
       <div class="ms-auto d-flex">
         <a href="{{ url_for('add_recipe') }}" class="btn btn-outline-light me-2">Create Recipe</a>
         <a href="{{ url_for('list_recipes') }}" class="btn btn-outline-light me-2">View Recipes</a>
+		<a href="{{ url_for('view_user', user_id=current_user.id) }}" class="btn btn-outline-light me-2">My Profile</a>
         <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Logout</a>
       </div>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarHeader" aria-controls="navbarHeader"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     </div>
   </div>
 </header>
 
-
 <!-- Content -->
-<p>Posted by: <strong style="color: white;">{{ recipe.user.username }}</strong></p>
+<p style="color: white;">
+  Posted by: 
+  <a href="{{ url_for('view_user', user_id=recipe.user.id) }}" style="color: white; font-weight: bold; text-decoration: underline;">
+    {{ recipe.user.username }}
+  </a>
+</p>
 <form action="{{ url_for('edit_recipe', recipe_id=recipe.id) }}" method="POST">
   <h1 id="title-display">{{ recipe.title }}</h1>
   <input type="text" name="title" id="title-input" value="{{ recipe.title }}" style="display:none;" class="form-control mb-3" />
