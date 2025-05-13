@@ -91,6 +91,23 @@
         {% for recipe in recipes %}
         <div class="col">
           <div class="card shadow-sm h-100">
+          <p style="color: white;">
+            Rating:
+            {% if recipe.rating %}
+              <span style="color: gold; font-size: 1.2em;">
+                {% for i in range(1, 6) %}
+                  {% if i <= recipe.rating %}
+                    ★
+                  {% else %}
+                    ☆
+                  {% endif %}
+                {% endfor %}
+              </span>
+              <small style="color: white;">({{ recipe.rating }} out of 5)</small>
+            {% else %}
+              <em>Not rated yet</em>
+            {% endif %}
+          </p>
 		 <p class="card-text">
        <p style="color: white;">
          Posted by: 
