@@ -160,3 +160,17 @@ def edit_profile(user_id):
 			flash('Profile updated successfully!', 'success')
 			return redirect(url_for('view_user', user_id=user_id))
 	return render_template('edit_profile.html', form=form, user_id=user_id)
+
+@myapp_obj.route('/recipe/<int:recipe_id>/save', methods=['POST'])
+@login_required
+def save_recipe(recipe_id):
+	recipe = Recipe.query.get_or_404(recipe_id)
+	if not current_user.saved.filter_by(id=recipe.id).first():
+		current_user.saved.append(recipe)
+		db.session.commit()
+		flash('Recipe saved to your collection!', 'success')
+	else:
+		flash('You’ve already saved that recipe.', 'info')
+	return redirect(request.referrer or url_for('home'))
+
+
