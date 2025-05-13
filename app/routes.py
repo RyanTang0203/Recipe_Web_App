@@ -135,3 +135,9 @@ def comment_recipe(recipe_id):
     db.session.add(comment)
     db.session.commit()
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
+
+@myapp_obj.route("/user/<int:user_id>")
+def view_user(user_id):
+    user = User.query.get_or_404(user_id)
+    recipes = Recipe.query.filter_by(user_id=user.id).all()
+    return render_template("user_recipes.html", user=user, recipes=recipes)
