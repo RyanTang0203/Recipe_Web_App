@@ -21,3 +21,10 @@ class RecipeForm(FlaskForm):
     instructions = TextAreaField('Instructions', validators=[DataRequired()])
     submit = SubmitField('Add Recipe')
     image = FileField("Recipe Image", validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
+
+class ProfileForm(FlaskForm):
+    username = StringField(
+        'Username',
+        validators=[DataRequired(), Length(min=4, max=150)]
+    )
+    submit = SubmitField('Save Changes')        
