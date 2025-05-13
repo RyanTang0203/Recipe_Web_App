@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from .models import db, User, Recipe, Comment
-from .forms import LoginForm, RegisterForm, RecipeForm
+from .forms import LoginForm, RegisterForm, RecipeForm, ProfileForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import myapp_obj
 from datetime import datetime
@@ -143,3 +143,20 @@ def view_user(user_id):
     user = User.query.get_or_404(user_id)
     recipes = Recipe.query.filter_by(user_id=user.id).all()
     return render_template("user_recipes.html", user=user, recipes=recipes)
+
+@myapp_obj.route('/user/<int:user_id>/edit', methods=['GET','POST'])
+@login_required
+def edit_profile(user_id):
+	if current_user.id != user_id:
+		abort(403)
+	form = ProfileForm(obj=current_user)
+	if form.validate_on_submit():
+		existing = User.query.filter_by(username=form.username.data).first()
+		if existing and existing.id != current_user.id:
+			flash('That username is already taken.', 'danger')
+		else:
+			current_user.username = form.username.data
+			db.session.commit()
+			flash('Profile updated successfully!', 'success')
+			return redirect(url_for('view_user', user_id=user_id))
+	return render_template('edit_profile.html', form=form, user_id=user_id)
