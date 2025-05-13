@@ -61,6 +61,7 @@
         <a href="{{ url_for('add_recipe') }}" class="btn btn-outline-light me-2">Create Recipe</a>
         <a href="{{ url_for('list_recipes') }}" class="btn btn-outline-light me-2">View Recipes</a>
 		<a href="{{ url_for('view_user', user_id=current_user.id) }}" class="btn btn-outline-light me-2">My Profile</a>
+		<a href="{{ url_for('saved_recipes') }}" class="btn btn-outline-light me-2">Saved Recipes</a>
         <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Logout</a>
       </div>
     </div>

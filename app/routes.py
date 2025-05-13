@@ -173,4 +173,9 @@ def save_recipe(recipe_id):
 		flash('You’ve already saved that recipe.', 'info')
 	return redirect(request.referrer or url_for('home'))
 
+@myapp_obj.route('/saved_recipes')
+@login_required
+def saved_recipes():
+    recipes = current_user.saved
+    return render_template('saved_recipes.html', recipes=recipes)
 
