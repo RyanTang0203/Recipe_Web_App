@@ -17,6 +17,8 @@ class Recipe(db.Model):
     instructions = db.Column(db.Text, nullable=False)
     created = db.Column(db.DateTime, default=datetime.utcnow)
     rating = db.Column(db.Integer, default=0)
+    image_filename = db.Column(db.String(120), nullable=True)
+    
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,10 +1,12 @@
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from .models import db, User, Recipe, Comment
 from .forms import LoginForm, RegisterForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import myapp_obj
 from datetime import datetime
+from werkzeug.utils import secure_filename
+import os
 
 # Login Page
 @myapp_obj.route('/', methods=['GET', 'POST'])
@@ -72,6 +74,14 @@ def list_recipes():
 def add_recipe():
     form = RecipeForm()
     if form.validate_on_submit():
+        image_filename = None
+        if form.image.data:
+            filename = secure_filename(form.image.data.filename)
+            image_path = os.path.join(current_app.root_path, 'static/uploads', filename)
+            form.image.data.save(image_path)
+            image_filename = filename
+
+        
         recipe = Recipe(
             title=form.title.data,
             description=form.description.data,

@@ -165,6 +165,14 @@
 
 <a href="{{ url_for('list_recipes') }}" class="btn btn-secondary mt-3">← Back to All Recipes</a>
 
+{% if recipe.image_filename %}
+  <div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='uploads/' + recipe.image_filename) }}"
+         alt="Recipe Image" class="img-fluid rounded">
+  </div>
+{% endif %}
+
+
 <!-- Comments Section -->
 <h3 class="mt-5">Leave a Comment</h3>
 <form method="POST" action="{{ url_for('comment_recipe', recipe_id=recipe.id) }}">
