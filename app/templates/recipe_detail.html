@@ -131,6 +131,24 @@
     {{ recipe.user.username }}
   </a>
 </p>
+
+{% if current_user.is_authenticated %}
+	<form action="{{ url_for('save_recipe', recipe_id=recipe.id) }}" method="POST" style="display:inline;">
+    {{ csrf_token() }}
+    <button type="submit" class="btn btn-outline-primary mb-3">
+      {% if current_user.saved.filter_by(id=recipe.id).first() %}
+         Saved
+      {% else %}
+         Save Recipe
+      {% endif %}
+    </button>
+  </form>
+{% else %}
+  <a href="{{ url_for('login') }}" class="btn btn-outline-primary mb-3">
+     Log in to Save
+  </a>
+{% endif %}
+
 <form action="{{ url_for('edit_recipe', recipe_id=recipe.id) }}" method="POST">
   <h1 id="title-display">{{ recipe.title }}</h1>
   <input type="text" name="title" id="title-input" value="{{ recipe.title }}" style="display:none;" class="form-control mb-3" />
