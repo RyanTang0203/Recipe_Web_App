@@ -137,6 +137,7 @@
 
 
 <!-- Content -->
+<p>Posted by: <strong style="color: white;">{{ recipe.user.username }}</strong></p>
 <form action="{{ url_for('edit_recipe', recipe_id=recipe.id) }}" method="POST">
   <h1 id="title-display">{{ recipe.title }}</h1>
   <input type="text" name="title" id="title-input" value="{{ recipe.title }}" style="display:none;" class="form-control mb-3" />

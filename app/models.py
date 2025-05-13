@@ -8,6 +8,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
+    recipes = db.relationship('Recipe', backref='user')
+
 
 class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,6 +20,7 @@ class Recipe(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow)
     rating = db.Column(db.Integer, default=0)
     image_filename = db.Column(db.String(120), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
 
 class Comment(db.Model):

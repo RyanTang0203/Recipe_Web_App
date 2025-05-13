@@ -88,7 +88,8 @@ def add_recipe():
             ingredients=form.ingredients.data,
             instructions=form.instructions.data,
             created=datetime.utcnow(),
-            image_filename=image_filename
+            image_filename=image_filename,
+            user=current_user
         )
         db.session.add(recipe)
         db.session.commit()

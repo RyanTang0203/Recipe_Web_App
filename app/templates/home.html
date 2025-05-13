@@ -90,6 +90,9 @@
         {% for recipe in recipes %}
         <div class="col">
           <div class="card shadow-sm h-100">
+		 <p class="card-text">
+        Posted by: <strong style="color: white;">{{ recipe.user.username }}</strong>
+      </p>
 
             <!-- DEBUG: Show actual filename -->
             {% if recipe.image_filename %}
