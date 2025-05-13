@@ -134,7 +134,6 @@
 
 {% if current_user.is_authenticated %}
 	<form action="{{ url_for('save_recipe', recipe_id=recipe.id) }}" method="POST" style="display:inline;">
-    {{ form.hidden_tag() }}
     <button type="submit" class="btn btn-outline-primary mb-3">
       {% if current_user.saved.filter_by(id=recipe.id).first() %}
          Saved
