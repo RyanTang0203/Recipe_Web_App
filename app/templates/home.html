@@ -13,81 +13,33 @@
       color: white;
     }
 
-    h1, h2, h3, label, strong, p, .lead {
-      color: white;
-    }
-
     .navbar {
       background-color: rgba(47, 38, 22, 0.95) !important;
     }
 
     .navbar-brand strong,
     .navbar a,
-    .navbar .btn-outline-light {
+    .btn-outline-light {
       color: white !important;
       border-color: white !important;
     }
 
-    .navbar .btn-outline-light:hover {
+    .btn-outline-light:hover {
       background-color: white !important;
       color: #2f2616 !important;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      background-color: #2f2616;
-      border-color: #2f2616;
-      color: white;
-    }
-
-    .btn-primary:hover,
-    .btn-secondary:hover {
-      background-color: white;
-      color: #2f2616;
-      border-color: white;
-    }
-
-    .form-control {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #2f2616;
-      border: 1px solid #2f2616;
-    }
-
-    .form-control::placeholder {
-      color: #2f2616;
-    }
-
-    .form-control:focus {
-      background-color: #f0dbcb;
-      box-shadow: 0 0 0 0.2rem rgba(47, 38, 22, 0.25);
-    }
-
-    .list-group-item {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #2f2616;
-      border-color: #2f2616;
     }
 
     .card {
       background-color: rgba(0, 0, 0, 0.4) !important;
       border: 1px solid #c8a792 !important;
-      color: white !important;
     }
 
-    .card-body {
-      background-color: transparent !important;
-      color: white !important;
-    }
-
-    .card-title,
-    .card-text,
-    .card .btn {
+    .card-title, .card-text, .btn {
       color: white !important;
     }
 
     .btn-outline-primary {
       border-color: white !important;
-      color: white !important;
     }
 
     .btn-outline-primary:hover {
@@ -100,7 +52,7 @@
 <body>
 
 <header>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="navbar navbar-dark shadow-sm">
     <div class="container-fluid">
       <a href="{{ url_for('home') }}" class="navbar-brand d-flex align-items-center">
         <strong>Food Recipe Website</strong>
@@ -115,7 +67,6 @@
 </header>
 
 <main>
-  <!-- Search Form -->
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
@@ -133,23 +84,26 @@
     </div>
   </section>
 
-  <!-- Recipe Cards -->
   <div class="album py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         {% for recipe in recipes %}
         <div class="col">
           <div class="card shadow-sm h-100">
+
+            <!-- DEBUG: Show actual filename -->
             {% if recipe.image_filename %}
               <img src="{{ url_for('static', filename='uploads/' + recipe.image_filename) }}"
                    class="card-img-top"
                    alt="{{ recipe.title }}"
                    style="height: 200px; object-fit: cover;">
             {% else %}
-              <div class="card-img-top" style="height: 200px; background: #868e96; display: flex; align-items: center; justify-content: center;">
+              <div class="card-img-top d-flex align-items-center justify-content-center"
+                   style="height: 200px; background: #868e96;">
                 <span style="color: #dee2e6;">{{ recipe.title }}</span>
               </div>
             {% endif %}
+
             <div class="card-body">
               <h5 class="card-title">{{ recipe.title }}</h5>
               <p class="card-text">{{ recipe.description[:100] }}...</p>
@@ -163,13 +117,5 @@
   </div>
 </main>
 
-<footer class="text-body-secondary py-5">
-  <div class="container">
-    <p class="float-end mb-1"><a href="#">Back to top</a></p>
-    <p class="mb-1">This is a student project using Bootstrap and Flask.</p>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -78,7 +78,7 @@ def add_recipe():
         if form.image.data:
             filename = secure_filename(form.image.data.filename)
             image_path = os.path.join(current_app.root_path, 'static/uploads', filename)
-            form.image.data.save(image_path)
+            form.image.data.save(image_path),
             image_filename = filename
 
         
@@ -87,7 +87,8 @@ def add_recipe():
             description=form.description.data,
             ingredients=form.ingredients.data,
             instructions=form.instructions.data,
-            created=datetime.utcnow()
+            created=datetime.utcnow(),
+            image_filename=image_filename
         )
         db.session.add(recipe)
         db.session.commit()
