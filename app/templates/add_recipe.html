@@ -138,12 +138,17 @@
     {{ form.instructions.label(class="form-label") }}
     {{ form.instructions(class="form-control", rows=5) }}
   </div>
+  <div class="mb-3">
+    {{ form.meal_types.label(class="form-label") }}
+    {{ form.meal_types(class="form-select", multiple=True) }}
+  </div>
+  <div class="mb-3">
   <button type="submit" class="btn btn-primary">Submit</button>
   <div class="mb-3">
     {{ form.image.label(class="form-label") }}
     {{ form.image(class="form-control") }}
   </div>
-  
+    
 </form>
 
 <a href="{{ url_for('list_recipes') }}" class="btn btn-link mt-3">Back to All Recipes</a>

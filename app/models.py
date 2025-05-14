@@ -30,6 +30,7 @@ class Recipe(db.Model):
     instructions = db.Column(db.Text, nullable=False)
     created = db.Column(db.DateTime, default=datetime.utcnow)
     rating = db.Column(db.Integer, default=0)
+    meal_types = db.Column(db.String(255), nullable=True, default="")
     image_filename = db.Column(db.String(120), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     

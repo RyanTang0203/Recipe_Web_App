@@ -178,6 +178,19 @@
   <textarea name="instructions" id="instructions-input" style="display:none;" class="form-control mt-2">{{ recipe.instructions }}</textarea>
 </div>
 
+<div class="recipe-section">
+  <strong>Meal Types:</strong><br>
+  <ul>
+    {% if recipe.meal_types %}
+      {% for meal_type in recipe.meal_types.split(",") %}
+        <li>{{ meal_type }}</li>
+      {% endfor %}
+    {% else %}
+      <li>No meal types specified</li>
+    {% endif %}
+  </ul>
+</div>
+
   <button type="button" onclick="enableEdit()" id="edit-btn" class="btn btn-outline-primary">Edit</button>
   <button type="submit" id="save-btn" class="btn btn-success" style="display:none;">Save</button>
 </form>
@@ -211,7 +224,6 @@
     <em>Not rated yet</em>
   {% endif %}
 </p>
-
 
 <!-- Comments Section -->
 <h3 class="mt-5">Leave a Comment</h3>

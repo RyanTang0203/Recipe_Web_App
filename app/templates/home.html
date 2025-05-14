@@ -76,6 +76,15 @@
         <p class="lead text-body-secondary">Start creating or searching recipes now!</p>
         <form method="GET" action="{{ url_for('home') }}">
           <input type="text" name="search" placeholder="Search recipes..." class="form-control mb-2">
+	  <select name="meal_type" class="form-select mb-2">
+	    <option value="">All Meal Types</option>
+	    <option value="Breakfast" {% if selected_meal_type == "Breakfast" %}selected{% endif %}>Breakfast</option>
+            <option value="Lunch" {% if selected_meal_type == "Lunch" %}selected{% endif %}>Lunch</option>
+            <option value="Dinner" {% if selected_meal_type == "Dinner" %}selected{% endif %}>Dinner</option>
+            <option value="Snack" {% if selected_meal_type == "Snack" %}selected{% endif %}>Snack</option>
+            <option value="Dessert" {% if selected_meal_type == "Dessert" %}selected{% endif %}>Dessert</option>
+            <option value="Drink" {% if selected_meal_type == "Drink" %}selected{% endif %}>Drink</option>
+          </select>
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
         <p class="mt-3">

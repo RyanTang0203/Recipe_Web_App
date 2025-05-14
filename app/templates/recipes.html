@@ -113,6 +113,17 @@
 		<a href="{{ url_for('view_user', user_id=current_user.id) }}" class="btn btn-outline-light me-2">My Profile</a>
         <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Logout</a>
       </div>
+      <form method="GET" action="{{ url_for('list_recipes') }}" class="d-flex ms-3">
+       <select name="meal_type" class="form-select me-2">
+	<option value="Breakfast" {% if selected_meal_type == "Breakfast" %}selected{% endif %}>Breakfast</option>
+        <option value="Lunch" {% if selected_meal_type == "Lunch" %}selected{% endif %}>Lunch</option>
+        <option value="Dinner" {% if selected_meal_type == "Dinner" %}selected{% endif %}>Dinner</option>
+        <option value="Snack" {% if selected_meal_type == "Snack" %}selected{% endif %}>Snack</option>
+        <option value="Dessert" {% if selected_meal_type == "Dessert" %}selected{% endif %}>Dessert</option>
+        <option value="Drink" {% if selected_meal_type == "Drink" %}selected{% endif %}>Drink</option>
+       </select>
+       <button type="submit" class="btn btn-outline-light">Filter</button>
+      </form>
     </div>
   </div>
 </header>

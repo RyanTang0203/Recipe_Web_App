@@ -45,11 +45,19 @@ def register():
 @login_required
 def home():
     search_query = request.args.get('search', '')
-    if search_query:
+    meal_type = request.args.get('meal_type', '')
+    if search_query and meal_type:
+        recipes = Recipe.query.filter(
+          (Recipe.title.ilike(f'%{search_query}%')) |
+          (Recipe.meal_types.ilike(f'%{meal_type}%'))
+        ).all()
+    elif meal_type:
+        recipes = Recipe.query.filter(Recipe.meal_types.ilike(f'%{meal_type}%')).all()
+    elif search_query:
         recipes = Recipe.query.filter(Recipe.title.ilike(f'%{search_query}%')).all()
     else:
         recipes = Recipe.query.all()
-    return render_template('home.html', recipes=recipes)
+    return render_template('home.html', recipes=recipes, search_query=search_query, selected_meal_type=meal_type)
 
 # Logout User	
 @myapp_obj.route('/logout')
@@ -62,11 +70,19 @@ def logout():
 @myapp_obj.route("/recipes")
 def list_recipes():
     search_query = request.args.get('search', '')
-    if search_query:
+    meal_type = request.args.get('meal_type', '')
+    if search_query and meal_type:
+        recipes = Recipe.query.filter(
+	  (Recipe.title.ilike(f'%{search_query}%')) |
+	  (Recipe.meal_types.ilike(f'%{meal_type}%'))
+        ).all()
+    elif meal_type:
+        recipes = Recipe.query.filter(Recipe.meal_types.ilike(f'%{meal_type}%')).all()
+    elif search_query:
         recipes = Recipe.query.filter(Recipe.title.ilike(f'%{search_query}%')).all()
     else:
         recipes = Recipe.query.all()
-    return render_template('recipes.html', recipes=recipes)
+    return render_template('recipes.html', recipes=recipes, search_query=search_query, selected_meal_type=meal_type)
 
 # Add New Recipe
 @myapp_obj.route("/recipe/new", methods=['GET', 'POST'])
@@ -81,7 +97,8 @@ def add_recipe():
             form.image.data.save(image_path),
             image_filename = filename
 
-        
+        meal_types = ",".join(form.meal_types.data) if form.meal_types.data else ""
+
         recipe = Recipe(
             title=form.title.data,
             description=form.description.data,
@@ -89,6 +106,7 @@ def add_recipe():
             instructions=form.instructions.data,
             created=datetime.utcnow(),
             image_filename=image_filename,
+	    meal_types=meal_types,
             user=current_user
         )
         db.session.add(recipe)
@@ -99,7 +117,8 @@ def add_recipe():
 @myapp_obj.route("/recipe/<int:recipe_id>")
 def view_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
-    return render_template("recipe_detail.html", recipe=recipe)
+    meal_types = recipe.meal_types.split(",") if recipe.meal_types else []
+    return render_template("recipe_detail.html", recipe=recipe, meal_types=meal_types)
 
 @myapp_obj.route("/recipe/<int:recipe_id>/delete")
 @login_required
